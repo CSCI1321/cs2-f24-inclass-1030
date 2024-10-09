@@ -40,9 +40,22 @@ public class FirstWindow extends Application{
 
     g.setLineWidth(2);
     for(int x=0; x<400; x++) {
-      g.setStroke(Color.BLACK);
+      g.setStroke(Color.rgb(x * 255 / 400,0,0));
       g.strokeLine(x,0, x,600);
     }
+
+    for(int y=0; y<600; y+=50) {
+      for(int x=0; x<400; x+=50) {
+        g.setFill(Color.rgb(0,y*255/600,x*255/400));
+        g.fillOval(x,y, 50,50);
+      }
+    }
+
+    double[] xs = {100, 200, 300, 100};
+    double[] ys = {100, 400, 200, 0};
+    g.strokePolygon(xs, ys, 3);
+
+
 
   }
 }
