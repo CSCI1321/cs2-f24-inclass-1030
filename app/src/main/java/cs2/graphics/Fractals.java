@@ -6,6 +6,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import java.io.File;
+import java.util.Scanner;
 
 public class Fractals extends Application{
 
