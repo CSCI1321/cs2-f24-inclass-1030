@@ -44,12 +44,27 @@ public class Interaction extends Application {
 
     
     AnimationTimer timer = new AnimationTimer() {
-      double x = 100;
-      double y = 100;
+      double x = 300;
+      double y = 300;
+      double vx = Math.random() * 20 - 10;
+      double vy = Math.random() * 20 - 10;
       public void handle(long t) {
+        g.setFill(Color.WHITE);
+        g.fillRect(0,0, 600,600);
+
         g.setFill(Color.RED);
         g.fillOval(x,y, 100,100);
-        x += 1;
+        
+        if(x > 500 || x <= 0) {
+          vx = -vx;
+        }
+        if(y > 500 || y <= 0) {
+          vy = -vy;
+        }
+
+        x += vx;
+        y += vy;
+
       }
     };
     timer.start();
