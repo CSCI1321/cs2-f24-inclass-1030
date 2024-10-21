@@ -12,8 +12,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import java.util.ArrayList;
 
 public class ParticleSystemApp extends Application {
+  Vec2 wind = new Vec2();
   public void start(Stage primaryStage) {
     Canvas canvas = new Canvas(600,600);
     Scene scene = new Scene(new StackPane(canvas));
@@ -24,12 +26,29 @@ public class ParticleSystemApp extends Application {
     GraphicsContext g = canvas.getGraphicsContext2D();
     canvas.requestFocus();
 
-    Particle p = new Particle(Vec2.random(10), Vec2.random(10));
+    ArrayList<ParticleSystem> ps = new ArrayList<ParticleSystem>();
+     //new ParticleSystem(new Vec2(300,300));
+
+    canvas.setOnMouseClicked((MouseEvent e) -> {
+      Vec2 pt = new Vec2(e.getX(), e.getY());
+      ps.add(new ParticleSystem(pt));
+    });
+    canvas.setOnMouseMoved((MouseEvent e) -> {
+      wind = new Vec2(e.getX() / 300 - 1, 0);
+    });
     
     AnimationTimer timer = new AnimationTimer() {
       public void handle(long t) {
-        p.display(g);
-        p.update();
+        g.setFill(Color.WHITE);
+        g.fillRect(0, 0, 600, 600);
+
+        for(ParticleSystem p : ps) {
+          p.addParticle();
+          p.display(g);
+          p.update();
+          p.addForce(new Vec2(0,0.1));
+          p.addForce(wind);
+        }
       }
     };
     timer.start();
