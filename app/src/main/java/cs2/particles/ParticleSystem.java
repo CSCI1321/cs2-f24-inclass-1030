@@ -3,6 +3,7 @@ package cs2.particles;
 import java.util.ArrayList;
 import cs2.util.Vec2;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class ParticleSystem {
   private ArrayList<Particle> parts = new ArrayList<Particle>();
@@ -16,8 +17,18 @@ public class ParticleSystem {
   }
 
   public void addParticle() {
-    Particle p = new Particle(this.origin.clone(), Vec2.random(1));
+    Image img = new Image("file:Star.png");
+    ImageParticle p = new ImageParticle(this.origin.clone(), Vec2.random(1), img);
     parts.add(p);
+    /*
+    Particle p = null;
+    if(Math.random() < 0.5) {
+      p = new RoundParticle(this.origin.clone(), Vec2.random(1));
+    } else {
+      p = new SquareParticle(this.origin.clone(), Vec2.random(1));
+    }
+    parts.add(p);
+    */
   }
   public void display(GraphicsContext g) {
     for(int i=0; i<parts.size(); i++) {
