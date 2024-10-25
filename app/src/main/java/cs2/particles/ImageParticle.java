@@ -13,7 +13,7 @@ public class ImageParticle extends Particle {
 
   @Override
   public void display(GraphicsContext g) {
-    Image img = new Image("file:Star.png");
+    g.setGlobalAlpha(0.7);
     g.drawImage(img, this.pos.getX(), this.pos.getY());
   }
 

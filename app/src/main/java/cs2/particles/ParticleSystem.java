@@ -17,9 +17,10 @@ public class ParticleSystem {
   }
 
   public void addParticle() {
-    Image img = new Image("file:Star.png");
-    ImageParticle p = new ImageParticle(this.origin.clone(), Vec2.random(1), img);
-    parts.add(p);
+    //Image img = new Image("file:Star.png");
+    //ImageParticle p = new ImageParticle(this.origin.clone(), Vec2.random(1), ParticleSystemApp.img);
+    RainbowParticle p = new RainbowParticle(this.origin.clone(), Vec2.random(1));
+    parts.add(0,p);
     /*
     Particle p = null;
     if(Math.random() < 0.5) {

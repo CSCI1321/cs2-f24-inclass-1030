@@ -23,7 +23,7 @@ public abstract class Particle {
     sz = 20;
   }
 
-  public abstract void display(GraphicsContext g); 
+  public abstract void display(GraphicsContext g);
 
   public void update() {
     this.pos.addThis(this.vel);
