@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 public abstract class Particle {
   protected Vec2 pos;
   protected Vec2 vel;
-  protected Color col;
+  protected ColorPattern cp;
   protected double sz;
 
   /* 
@@ -19,7 +19,8 @@ public abstract class Particle {
   public Particle(Vec2 p, Vec2 v) {
     pos = p;
     vel = v;
-    col = Color.rgb(200,50,50,0.4);
+    //cp = new SolidColor(Color.rgb(200,50,50,0.4));
+    cp = new RainbowColor();
     sz = 20;
   }
 

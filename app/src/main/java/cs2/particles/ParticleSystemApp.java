@@ -39,10 +39,12 @@ public class ParticleSystemApp extends Application {
     canvas.setOnMouseMoved((MouseEvent e) -> {
       wind = new Vec2(e.getX() / 300 - 1, 0);
     });
+
+    ColorPattern bgColor = new RainbowColor();//new SolidColor(Color.DARKSALMON);
     
     AnimationTimer timer = new AnimationTimer() {
       public void handle(long t) {
-        g.setFill(Color.WHITE);
+        g.setFill(bgColor.getColor());
         g.fillRect(0, 0, 600, 600);
 
         for(ParticleSystem p : ps) {

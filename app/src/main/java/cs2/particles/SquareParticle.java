@@ -10,7 +10,7 @@ public class SquareParticle extends Particle {
 
   @Override
   public void display(GraphicsContext g) {
-    g.setFill(this.col);
+    g.setFill(this.cp.getColor());
     g.fillRect(this.pos.getX(), this.pos.getY(), this.sz, this.sz);
   }
 }

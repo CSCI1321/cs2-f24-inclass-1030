@@ -9,7 +9,7 @@ public class RoundParticle extends Particle {
   }
   @Override
   public void display(GraphicsContext g) {
-    g.setFill(this.col);
+    g.setFill(this.cp.getColor());
     g.fillOval(pos.getX(),pos.getY(), this.sz,this.sz); 
   }
 
