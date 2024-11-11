@@ -1,5 +1,6 @@
 package cs2.util;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -53,6 +54,33 @@ public class Collections {
     set.clear();
     System.out.println(set);
 
+    HashMap<String, Integer> map = new HashMap<String,Integer>();
+    map.put("Hello", 0);
+    map.put("Goodbye", 42);
+    map.put("What?", 16);
+    System.out.println(map);
+
+    System.out.println(map.get("Hello"));
+    System.out.println(map.get("ERROR"));
+
+    map.remove("What?");
+    System.out.println(map);
+
+    System.out.println(map.keySet());
+
+    for(String key : map.keySet()) {
+      int value = map.get(key);
+      System.out.println(key + " -> " + value);
+    }
+
+    System.out.println(map.containsKey("Hello"));
+    System.out.println(map.containsValue(12));
+    System.out.println(map);
+
+    map.put("Hello", 999);
+    System.out.println(map);
+    map.remove("????");
+    System.out.println(map);
 
   }
 
