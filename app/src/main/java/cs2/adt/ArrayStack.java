@@ -1,8 +1,10 @@
 package cs2.adt;
 
+import java.util.EmptyStackException;
+
 public class ArrayStack<T> implements Stack<T> {
   //Fields
-  private T[] arr;
+  public T[] arr;
   private int len;
 
   //Constructor
@@ -11,6 +13,7 @@ public class ArrayStack<T> implements Stack<T> {
     len = 0;
   }
 
+  
   public void push(T elem) {
     if(arr.length == len) {
       T[] tmp = (T[]) new Object[len*2];
@@ -24,7 +27,7 @@ public class ArrayStack<T> implements Stack<T> {
   }
   public T pop() {
     len--;
-    return arr[len+1];
+    return arr[len];
   }
   public T peek() {
     return arr[len-1];
@@ -32,7 +35,7 @@ public class ArrayStack<T> implements Stack<T> {
   public boolean isEmpty() {
     return len == 0;
   }
-
+  
   /*
   //Methods
   public void push(T elem) {
@@ -43,7 +46,8 @@ public class ArrayStack<T> implements Stack<T> {
     }
     arr = tmp;
   }
-  public T pop() {
+  public T pop() throws EmptyStackException {
+    if(isEmpty()) throw new EmptyStackException();
     T[] tmp = (T[]) new Object[arr.length-1];
     for(int i=0; i<tmp.length; i++) {
       tmp[i] = arr[i];
@@ -52,7 +56,8 @@ public class ArrayStack<T> implements Stack<T> {
     arr = tmp;
     return retVal;
   }
-  public T peek() {
+  public T peek() throws EmptyStackException {
+    if(isEmpty()) throw new EmptyStackException();
     return arr[arr.length-1];
   }
   public boolean isEmpty() {
