@@ -43,19 +43,24 @@ public class ParticleSystemApp extends Application {
     ColorPattern bgColor = new RainbowColor();//new SolidColor(Color.DARKSALMON);
     
     AnimationTimer timer = new AnimationTimer() {
+      long prevT = 0;
       public void handle(long t) {
-        g.setFill(bgColor.getColor());
-        g.fillRect(0, 0, 600, 600);
+        long elapsedTime = t - prevT;
+        if(elapsedTime > 1000/30) {
+          prevT = t;
+          g.setFill(bgColor.getColor());
+          g.fillRect(0, 0, 600, 600);
 
-        for(ParticleSystem p : ps) {
-          p.addParticle();
-          p.display(g);
-          p.update();
-          p.addForce(new Vec2(0,0.1));
-          p.addForce(wind);
+          for(ParticleSystem p : ps) {
+            p.addParticle();
+            p.display(g);
+            p.update();
+            p.addForce(new Vec2(0,0.1));
+            p.addForce(wind);
+          }
+
+          g.drawImage(img, 100,100);
         }
-
-        g.drawImage(img, 100,100);
       }
     };
     timer.start();
