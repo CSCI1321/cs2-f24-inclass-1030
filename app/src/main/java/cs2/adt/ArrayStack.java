@@ -26,10 +26,12 @@ public class ArrayStack<T> implements Stack<T> {
     len++;
   }
   public T pop() {
+    if(isEmpty()) throw new EmptyStackException();
     len--;
     return arr[len];
   }
   public T peek() {
+    if(isEmpty()) throw new EmptyStackException();
     return arr[len-1];
   }
   public boolean isEmpty() {
